@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"/>
+    <title>AllmClock </title>
+</head>
+<body>
+        <form class = "hidden" id="login-form">
+        <!--<input  required maxlength ="15" type="text" placeholder="What is your name ?" />
+        <button>Log In</button>!-->
+        </form>
+        <div>
+		<h2 id="clock" > 00:00:00</h2> <h2 id="clock2"> 00:00:00</h2></div>
+        <h1 id="greeting" ></h1>
+        <form id ="todo-form">
+          <!--  <input type="text" placeholder="Write a To Do and Press plz">-->
+        </form>
+        <ul id="todo-list"></ul>
+        <div id="quote">
+       <!-- <button>❌</button>-->
+        <span></span>
+        </div>
+</body>
+<script>
+const clock = document.querySelector("h2#clock");
+const clock2 = document.querySelector("h2#clock2");
+
+function getClock() {
+    const Today = new Date();
+    const Before_Dday = new Date("2023-04-24");
+	Before_Dday.setHours(0, 0, 0, 0);
+    let DiffDay =   Today.getTime() - Before_Dday.getTime();
+	let Before_day = Math.floor(DiffDay / (1000 * 60 * 60 * 24) +1);
+ 
+    clock.innerText =`allm before day ${Before_day}일 `;
+	
+}
+
+
+getClock();
+setInterval(getClock, 1000);
+
+function D_dayClock() {
+	let Today = new Date();
+	let After_Dday = new Date("2024-04-24");
+	After_Dday.setHours(0, 0, 0, 0);
+	let DiffDay = After_Dday.getTime() - Today.getTime();
+	let After_day = Math.floor(DiffDay / (1000 * 60* 60 * 24) + 2);
+
+if(Today.getFullYear() === After_Dday.getFullYear() ) {
+	After_Dday.getFullYear() + 1;
+}
+clock2.innerText =`allm after day ${After_day}일`;
+
+}
+
+D_dayClock();
+setInterval(D_dayClock, 1000);
+
+</script>
+</html>
